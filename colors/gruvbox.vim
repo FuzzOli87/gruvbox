@@ -86,7 +86,7 @@ let s:is_dark=(&background == 'dark')
 let s:gb = {}
 
 " fill it with absolute colors
-let s:gb.dark0_hard  = ['#1d2021', 234]     " 29-32-33
+let s:gb.dark0_hard  = ['#000000', 234]     " 29-32-33
 let s:gb.dark0       = ['#282828', 235]     " 40-40-40
 let s:gb.dark0_soft  = ['#32302f', 236]     " 50-48-47
 let s:gb.dark1       = ['#3c3836', 237]     " 60-56-54
@@ -109,6 +109,7 @@ let s:gb.light4_256  = ['#a89984', 246]     " 168-153-132
 
 let s:gb.bright_red     = ['#fb4934', 167]     " 251-73-52
 let s:gb.bright_green   = ['#b8bb26', 142]     " 184-187-38
+let s:gb.bright_lavander = ['#c4b3e4', 13]     " 184-187-38
 let s:gb.bright_yellow  = ['#fabd2f', 214]     " 250-189-47
 let s:gb.bright_blue    = ['#83a598', 109]     " 131-165-152
 let s:gb.bright_purple  = ['#d3869b', 175]     " 211-134-155
@@ -130,6 +131,7 @@ let s:gb.faded_blue     = ['#076678', 24]      " 7-102-120
 let s:gb.faded_purple   = ['#8f3f71', 96]      " 143-63-113
 let s:gb.faded_aqua     = ['#427b58', 66]      " 66-123-88
 let s:gb.faded_orange   = ['#af3a03', 130]     " 175-58-3
+let s:gb.light_blue     = ['#6699CC', 24]
 
 " }}}
 " Setup Emphasis: {{{
@@ -192,10 +194,12 @@ if s:is_dark
 
   let s:red    = s:gb.bright_red
   let s:green  = s:gb.bright_green
+  let s:lavander = s:gb.bright_lavander
   let s:yellow = s:gb.bright_yellow
   let s:blue   = s:gb.bright_blue
   let s:purple = s:gb.bright_purple
   let s:aqua   = s:gb.bright_aqua
+  let s:lightblue = s:gb.light_blue
   let s:orange = s:gb.bright_orange
 else
   let s:bg0  = s:gb.light0
@@ -267,6 +271,7 @@ let s:gb.blue   = s:blue
 let s:gb.purple = s:purple
 let s:gb.aqua   = s:aqua
 let s:gb.orange = s:orange
+
 
 " }}}
 
@@ -416,6 +421,8 @@ call s:HL('GruvboxAquaBold', s:aqua, s:none, s:bold)
 call s:HL('GruvboxOrange', s:orange)
 call s:HL('GruvboxOrangeBold', s:orange, s:none, s:bold)
 
+call s:HL('GruvboxLightBlue', s:lightblue)
+call s:HL('GruvboxLightBlueBold', s:lightblue, s:none, s:bold)
 call s:HL('GruvboxRedSign', s:red, s:sign_column, s:invert_signs)
 call s:HL('GruvboxGreenSign', s:green, s:sign_column, s:invert_signs)
 call s:HL('GruvboxYellowSign', s:yellow, s:sign_column, s:invert_signs)
@@ -581,7 +588,7 @@ hi! link Constant GruvboxPurple
 hi! link Character GruvboxPurple
 " String constant: "this is a string"
 if g:gruvbox_improved_strings == 0
-  call s:HL('String',  s:green, s:none, s:italicize_strings)
+  call s:HL('String',  s:lavander, s:none, s:italicize_strings)
 else
   call s:HL('String',  s:bg1, s:fg1, s:italicize_strings)
 endif
@@ -1000,11 +1007,16 @@ hi! link javascriptNodeGlobal GruvboxFg1
 hi! link javascriptVariable GruvboxRed
 " hi! link javascriptIdentifier GruvboxOrange
 " hi! link javascriptClassSuper GruvboxOrange
-hi! link javascriptIdentifier GruvboxOrange
+call s:HL('javascriptIdentifier', s:orange, s:none, s:italic)
+" hi! link javascriptIdentifier GruvboxOrange
 hi! link javascriptClassSuper GruvboxOrange
 
 " hi! link javascriptFuncKeyword GruvboxOrange
 " hi! link javascriptAsyncFunc GruvboxOrange
+hi! link javascriptFuncName GruvboxLightBlue
+hi! link javascriptFuncCall GruvboxLightBlue
+hi! link javascriptMethod GruvboxLightBlue
+
 hi! link javascriptFuncKeyword GruvboxAqua
 hi! link javascriptAsyncFunc GruvboxAqua
 hi! link javascriptClassStatic GruvboxOrange
@@ -1216,3 +1228,4 @@ endfunction
 " }}}
 
 " vim: set sw=2 ts=2 sts=2 et tw=80 ft=vim fdm=marker:
+
