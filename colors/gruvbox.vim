@@ -1030,12 +1030,12 @@ hi! link javascriptMessage GruvboxRed
 hi! link javascriptTemplateSB GruvboxAqua
 hi! link javascriptTemplateSubstitution GruvboxFg1
 
-" hi! link javascriptLabel GruvboxBlue
-" hi! link javascriptObjectLabel GruvboxBlue
-" hi! link javascriptPropertyName GruvboxBlue
-hi! link javascriptLabel GruvboxFg1
-hi! link javascriptObjectLabel GruvboxFg1
-hi! link javascriptPropertyName GruvboxFg1
+hi! link javascriptLabel GruvboxBlue
+hi! link javascriptObjectLabel GruvboxBlue
+hi! link javascriptPropertyName GruvboxBlue
+" hi! link javascriptLabel GruvboxFg1
+" hi! link javascriptObjectLabel GruvboxFg1
+" hi! link javascriptPropertyName GruvboxFg1
 
 hi! link javascriptLogicSymbols GruvboxFg1
 hi! link javascriptArrowFunc GruvboxFg1
